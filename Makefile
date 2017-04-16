@@ -47,7 +47,7 @@ mmap: mmap_service mmap_watch
 # mmap's test have some strange problems, i can't fix it
 
 mmap_test: mmap
-	timeout 5 ./mmap_service mmap.f &
+	timeout 1 ./mmap_service mmap.f || true
 	./mmap_watch mmap.f >/dev/null
 	rm -f mmap.f
 	echo mmap test passed
