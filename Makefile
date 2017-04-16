@@ -6,7 +6,7 @@ TEST_STR=abcdefghijklmnopqrstuvwxyz
 
 all: fifo pipe mmap
 
-test: fifo_test pipe_test
+test: fifo_test pipe_test mmap_test
 
 clean: fifo_clean pipe_clean mmap_clean
 
@@ -48,9 +48,9 @@ mmap: mmap_service mmap_watch
 
 mmap_test: mmap
 	timeout 5 ./mmap_service mmap.f &
-	echo if the next step need 4 to 6 seconds to finish, mmap test passed
 	./mmap_watch mmap.f >/dev/null
 	rm -f mmap.f
+	echo mmap test passed
 
 mmap_clean:
 	rm -f mmap_service mmap_watch mmap_service.o mmap_watch.o mmap.f

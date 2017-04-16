@@ -13,6 +13,8 @@ int main(int argc, char *argv[]) {
     if ((fd = open(argv[1], O_RDONLY)) == -1)
         error("Cannot open file\n");
     char *p = mmap(NULL, 1, PROT_READ, MAP_SHARED, fd, 0);
+    if (!p)
+        error("Cannot mmap\n");
     char c;
     while (*p != c) {
         c = *p;
